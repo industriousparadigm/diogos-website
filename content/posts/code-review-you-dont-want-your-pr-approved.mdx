@@ -1,0 +1,161 @@
+---
+title: "Code review: you don't want your PR approved"
+excerpt: 'When my work is approved without feedback, I am disappointed - mistakes are not something to be concealed but rather an opportunity for everyone to learn.'
+coverImage: '/assets/feedback.jpg'
+date: '2021-04-06T18:35:07.322Z'
+author:
+  name: Diogo Costa
+  picture: '/assets/jj.jpeg'
+ogImage:
+  url: '/assets/feedback.jpg'
+---
+
+Good code review can be [your team's superpower](https://kentcdodds.com/chats-with-kent-podcast/seasons/03/episodes/dr-michaela-greiler-makes-code-reviews-your-teams-superpower).
+
+I love engaging with my colleagues to discuss pull requests, whether theirs or mine. One can learn so much, even (perhaps especially?) if there is a gap in seniority!
+
+Conversely, when my work is approved without feedback, I am disappointed, because code review has consistently improved my understanding of the tools we all use.
+
+It's about collaborating to improve the team's output - good code review is based on the acceptance that we all make mistakes, and that those are not something to be concealed but rather an opportunity for everyone to learn. Once you accept that [criticism of your code is not criticism of you as a human](https://phauer.com/2018/code-review-guidelines/#you-are-not-your-code), the constructive learning starts and oh, what a wonderful thing it is!
+
+I always try to push my teams towards giving reviews the love they deserve, finding good habits and ultimately establishing a great process.
+
+## Why do we need a code review process?
+
+Meaningful reviews are simply less likely to happen without having a process in place.
+
+Teams that don't have one are at the mercy of the individual engineer's inclination to do it well, and without buy-in from everyone the ones that do will feel frustrated and tend to give up.
+
+Similarly, others might feel that the process is too strict and simply avoid it altogether.
+
+Another obstacle is how personal it can feel. Getting our work reviewed directly by peers **may feel a bit invasive and foreign**. Don't worry! That is totally natural, especially when coming from a career outside of tech.
+
+Rules and guidelines help engineers navigate that feeling, and by establishing that the team wants to take review seriously, people can discuss ways to continually improve the experience, as opposed to debating whether review matters or not.
+
+## Goal of code review
+
+> "The primary purpose of code review is to make sure that the overall code health of Google’s code base is improving over time" - Google
+
+Google's [excellent notes on the review process](https://google.github.io/eng-practices/review/reviewer/standard.html) define this goal, but what does it mean to "improve the codebase"? It's more than implementing a change that "works" - aspects like code readability and context awareness ought to be considered as well. If a feature works but introduces avoidable tech debt, a reviewer should request changes.
+
+**This doesn't mean PRs can only be approved if they are perfect**! An "okay" improvement is infinitely better than no improvement at all, and a slow review process will harm your team's morale.
+
+## The golden side effects of code review
+
+The article opened with this notion, but it cannot be overstated: **reviewing someone else's code will make you both better engineers**.
+
+And how could it not?
+
+- We are exposed to different parts of the codebase, **building domain knowledge**;
+- We **learn programming techniques** and approaches;
+- We practice **attention to detail and communication** skills;
+- We sometimes do **research** to confirm whether a comment we are about to make is correct;
+- We are **reading and interpreting code** - arguably the thing developers do the most while programming.
+
+## Code review should be prioritized
+
+It is tempting to think we can leave a review for later, but this mentality undermines the process.
+
+If you would eventually review a colleague's work, then **do it as soon as you can** instead.
+
+The benefits are clear: if work is "rewarded" with quick feedback, engineers are able to incorporate it shortly after they wrote the code, and a healthy feedback loop can be an addictive good habit. PRs should ideally go through multiple review rounds daily.
+
+As a bonus, this fast process leads to features taking a shorter time to get to production - one of the biggest predictors of software teams' success.
+
+Waiting a few days for a review, however, adds a lot of friction. Merge conflicts can arise in the meantime, our memory of the implementation deteriorates, context switching (the killer of productivity!) becomes more common, etc.
+
+So while it can be tempting to put off that review until you're done with your own tickets, remember that your greatest strength as an engineer is not your individual output, but rather your impact in the team you work with!
+
+A caveat - I don't advocate stopping in the middle of a coding session if a review request comes in. A good rule of thumb here is, if you have pending reviews and you're just coming out of a meeting, starting your day or back from lunch, **always prioritize reviews** before going back to your own work.
+
+## Strategies for a meaningful review
+
+### Be kind to other humans
+
+Code review brings out our human nature a lot.
+
+No matter how much we advocate for a healthy, blame-free and mutually beneficial process, it will still hurt to see our work challenged in the public eye and feeling we are not good enough. Because of this, **it's exceptionally critical to be kind, constructive and positive** in every comment we make.
+
+I cannot stress this enough - failing at this will cause more harm than good, no matter how knowledgeable and right you are.
+
+A great way to navigate this is the [Is it true? Is it necessary? Is it kind?](https://phauer.com/2018/code-review-guidelines/#three-filters-for-feedback) approach - if a comment you're about to make does not pass those 3 questions, consider deleting it.
+
+### Avoid perfection like the plague
+
+Remember the goal of code review: improving the codebase.
+
+If you find yourself spending too long trying to iron out details in a colleague's PR _which is already an improvement to the codebase_, then approve it instead. **You're likely in the realm of diminished gains at this point**.
+
+Quoting from Google's guidelines: "_Instead of seeking perfection, what a reviewer should seek is continuous improvement_".
+
+### Be clear on what you are requesting
+
+Label your comments or make it otherwise clear whether you are requesting some change / require an answer or merely making a suggestion that the author can disregard.
+
+### Challenge overly complex code
+
+Code review is particularly powerful here: if you're having a hard time understanding the PR and can't make sense of it, it's probably going to feel that way to other devs too.
+
+This is understandable. After spending days working on some feature, it's very easy for an author to understand their code much more easily than colleagues looking at it for the first time.
+
+But complex or hard to read code being merged in is fertile grounds for slowing down future changes or bugs being introduced by the next developer, and as such it should absolutely be challenged.
+
+The reviewer has an excellent chance to spot potential issues, for instance poor naming of variables or lack of comments where the next person has no chance to understand why something is implemented the way it is.
+
+### Review even when the author is more senior
+
+This fear is so common, and yet such a misconception. If you regard someone so highly that you think your review isn't helpful to them, then you can at the very least learn a lot from just reading their code.
+
+And I will let you in on a secret - even the most senior of devs introduces bugs, makes typos and misses simpler solutions! You're doing them a disservice by assuming their work needs no review.
+
+Finally, as an experienced engineer it's very valuable for me to know whether my code can be understood by everyone, and less senior colleagues are best placed to give this feedback.
+
+### Point out context-based omissions
+
+The complete engineer doesn't blindly follow ticket requirements - it's entirely possible that the team forgot to consider some aspects of a given feature, and with a strong understanding of your team's product you can add value by pointing these things out at code review level.
+
+Similarly, as a reviewer you should be requesting codebase-level changes that become necessary as a result of the feature, such as the need to update the readme when appropriate.
+
+### Do not nitpick
+
+Reviewers can sometimes be very particular around semicolons, code style, etc.
+
+Learn to recognize when a change request is just personal preference, or whether it is truly valuable for the codebase - and then discard the ones that aren't.
+
+A lot of this kind of feedback is better handled in a more productive, value-creation way: go and advocate for / create a style guide, or implement automated style and linting rules that everyone can benefit from, thus removing such discussions from the code review stage.
+
+## Strategies for submitting PRs that invite meaningful review
+
+### Use common sense
+
+Do not submit PRs in a state that you yourself are discouraged to review when faced with.
+
+The golden rule is to [respect your reviewer's time](https://mtlynch.io/code-review-love/#the-golden-rule-value-your-reviewers-time).
+
+### Break your features into the smallest PRs you can think of
+
+Break your big features into small PRs - a change to 32 files with 25,000 lines added will be reviewed by approximately zero colleagues.
+
+This can be done by carefully considering what the micro-changes might be before attempting to write any code - and this has the additional benefit of giving you a perspective you might not have considered had you just dived into it in one massive PR.
+
+### Read what you are about to submit
+
+Do a basic review of your own PR to catch any obvious mistakes like random console logs, commented out code etc. Small issues like that may seem minor, but they signal to colleagues that the PR author is rushing their changes through.
+
+### Use appropriate titles and descriptions
+
+When submitted, your PRs should be titled appropriately, they should have solid descriptions that explain why they exist, and they should link to any relevant tickets or design briefs.
+
+Most of the time, reviewers should be able to understand everything just from reading the PR itself, without the need to go and check the JIRA board or asking other colleagues why this change is done.
+
+### Engage with your reviewer respectfully
+
+Avoid disregarding comments or change requests without explaining your reasoning. Doing so would undermine the process greatly - people are naturally less inclined to leave comments for a colleague who routinely ignores them!
+
+Furthermore, if an issue arises where there is some disagreement, try to err on the side of the reviewer's opinion: they are, after all, more detached and that is a benefit when critiquing your implementation.
+
+## Now get out there and get reviewin'!
+
+I hope these ideas can help you improve your day-to-day work, but by all means feel free to challenge them. Every team is different, and you should always question the rules in each interaction - what works when reviewing Janet's work might be a poor approach when dealing with Ricardo. Humans are unique that way.
+
+Lastly, remember that scrutinizing other people's work in a public forum can be very upsetting if done poorly - [some even advise against it altogether](https://twitter.com/searls/status/1370455315246952449?s=21). As such, it is exceedingly important to be very sensible when approaching it, but I still wholeheartedly recommend you try to use this tool comprehensively. The benefits are immense and immediate!
