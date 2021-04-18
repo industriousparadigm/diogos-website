@@ -64,7 +64,6 @@ export const GlobalStyle = createGlobalStyle`
     background-color: var(--color-background);
     color: var(--color-primary);
     font-size: 18px;
-    line-height: 1.5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -78,8 +77,11 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     cursor: pointer;
 
-    &:hover {
-      text-decoration: underline;
+    /* hack to avoid underline remaining in mobile 🤦‍♀️ */
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -89,8 +91,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-family: 'Alegreya Sans SC', sans-serif;
-    color: var(--color-secondary);
     font-weight: 800;
     font-size: 2rem;
   }
@@ -108,6 +108,7 @@ export const GlobalStyle = createGlobalStyle`
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+    line-height: 1.5rem;
   }
 
   strong {

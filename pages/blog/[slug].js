@@ -7,10 +7,13 @@ export default function Post({ post, morePosts, preview }) {
   //   return <ErrorPage statusCode={404} />
   // }
   return (
-    <article
-      className="mb-32"
-      dangerouslySetInnerHTML={{ __html: post.content }}
-    />
+    <>
+      <h1>{post.title}</h1>
+      <article
+        className="mb-32"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
+    </>
   );
 }
 

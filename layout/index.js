@@ -2,17 +2,15 @@ import config from 'config';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { capitalize } from 'lib';
-// import Footer from 'components/Footer';
+import { capitalize, getPageName } from 'lib';
 import Header from 'components/Header';
 import Spacer from 'components/Spacer';
+import RowSeparator from 'components/RowSeparator';
 
 function Layout({ children }) {
   // determine specific page title
-  const { pathname } = useRouter();
-  const pageTitle = capitalize(
-    config.menuItems.find((page) => page.path === pathname)?.name
-  );
+  const router = useRouter();
+  const pageTitle = capitalize(getPageName(router));
 
   // build tab title specific to this page
   const title = pageTitle
@@ -27,8 +25,8 @@ function Layout({ children }) {
         <Spacer size={16} />
         <Header />
         <RowSeparator />
+        <Spacer size={12} />
         <Content>{children}</Content>
-        {/* <Footer /> */}
       </SiteWrapper>
     </>
   );
@@ -36,15 +34,9 @@ function Layout({ children }) {
 
 const SiteWrapper = styled.div`
   position: relative;
-  padding: 32px 16px;
-  max-width: 800px;
+  padding: 24px 16px;
+  max-width: 720px;
   margin: 0 auto;
-`;
-
-const RowSeparator = styled.hr`
-  height: 1px;
-  border: none;
-  background: rgba(192, 188, 182, 0.4);
 `;
 
 const Content = styled.main`
